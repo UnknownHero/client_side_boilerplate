@@ -24,6 +24,17 @@ module.exports = function (grunt,projectConfig) {
                     stdout: true
                 }
             }
+        },
+
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: "app",
+                    mainConfigFile: "app/main.js",
+                    out: "release/App.js",
+                    name : 'App'
+                }
+            }
         }
 
 
@@ -31,6 +42,6 @@ module.exports = function (grunt,projectConfig) {
 
     grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('build', ['shell:bower']);
+    grunt.registerTask('build', ['shell:bower' , 'requirejs:compile']);
 
 };

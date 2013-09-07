@@ -1,5 +1,6 @@
 node_modules
 app/vendor
+release
 
 .idea
 *.iml
