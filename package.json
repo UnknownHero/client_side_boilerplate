@@ -1,0 +1,21 @@
+{
+    "name": "client_side_boilerplate",
+
+    "homepage": "https://github.com/UnknownHero/client_side_boilerplate.git",
+
+    "author": {
+        "name": "UnknownHero"
+    },
+
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-shell": "0.3.*",
+        "load-grunt-tasks": "~0.1.0",
+        "time-grunt": "~0.1.1",
+        "bower": "1.2.*"
+    },
+
+    "engines": {
+        "node": ">=0.8.0"
+    }
+}
