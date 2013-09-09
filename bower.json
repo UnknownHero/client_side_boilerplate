@@ -4,9 +4,14 @@
     "version":"0.1.0",
     "directory" : "app/vendor",
     "dependencies": {
+
         "jquery": "~1.9.1",
-        "ember": "~1.0.0",
+        "ember": "latest",
         "ember-data-shim" : "latest",
+        "handlebars": "1.0.0-rc.4",
+        "requirejs" : "latest",
+        "require-css" : "latest",
+
         "jquery.transit": "~0.9.9"
     },
     "devDependencies": {

@@ -4,21 +4,25 @@ require.config({
     paths: {
         jquery: 'vendor/jquery/jquery',
         Handlebars: 'vendor/handlebars/handlebars',
-        //Ember: 'http://cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0-pre.2/ember-1.0.0-pre.2',
-        Ember: 'vendor/ember/ember',
-        DS: 'vendor/ember-data-shim/ember-data',
-        hbs: 'vendor/hbs'
+        ember: 'vendor/ember/ember',
+        DS: 'vendor/ember-data-shim/ember-data'
     },
 
     // shim non-amd globals
     shim: {
-        Ember: {
+        ember: {
             deps: ['Handlebars', 'jquery'],
             exports: 'Ember'
         },
         DS: {
-            deps: ['Ember'],
+            deps: ['ember'],
             exports: 'DS'
         }
     }
+});
+
+
+
+define([ 'router' , 'templates' ], function(  router , templates){
+
 });

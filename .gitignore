@@ -1,6 +1,10 @@
 node_modules
 app/vendor
-release
+dist/*
+dist/main.js
+app/css
 
+.sass-cache
 .idea
 *.iml
+*.log

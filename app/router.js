@@ -6,9 +6,12 @@
 //
 // The syntax for routers is changing, see: https://gist.github.com/3981133
 
-define(['Ember', 'App', 'routes/root'], function(Ember, App, root){
-    App.Router = Ember.Router.extend({
-        enableLogging: true,
-        root: root
-    });
+define(['ember', 'app', 'routes/root'], function(Ember, App, root){
+
+        App.Router = Ember.Router.extend({
+            enableLogging: true,
+            root: root
+        });
+
+        return App.Router;
 });
