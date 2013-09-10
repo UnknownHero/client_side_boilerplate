@@ -1,4 +1,4 @@
-define(['.', 'app' , 'underscore','routers/main', 'routers/denied'],
+define(['ember', 'app' , 'underscore','routers/main', 'routers/denied'],
     function (Ember, App, _, routers_main, routers_denied) {
 
         var locator = App.get("locator"),

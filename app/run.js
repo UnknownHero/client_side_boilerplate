@@ -6,10 +6,9 @@
 //
 // The syntax for routers is changing, see: https://gist.github.com/3981133
 
-define(['ember', 'app', 'dependencies'], function(Ember, App){
+define(['ember', 'app', 'environments/dependencies'], function(Ember, App){
         var locator =   App.get("locator");
 
         App.Router = locator.get("baseRouter");
-
         console.log(App.Router.create().get("hello"));
 });
