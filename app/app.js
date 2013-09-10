@@ -9,9 +9,6 @@ define(['ember', 'routers/main'], function(Ember , main){
         locator: Ember.Object.create({})
     });
 
-
-
-
     return window.App;
 });
 
