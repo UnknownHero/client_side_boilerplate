@@ -5,7 +5,8 @@ require.config({
         jquery: 'vendor/jquery/jquery',
         Handlebars: 'vendor/handlebars/handlebars',
         ember: 'vendor/ember/ember',
-        DS: 'vendor/ember-data-shim/ember-data'
+        DS: 'vendor/ember-data-shim/ember-data',
+        Swag: 'vendor/swag/lib/swag'
     },
 
     // shim non-amd globals
@@ -17,12 +18,16 @@ require.config({
         DS: {
             deps: ['ember'],
             exports: 'DS'
+        },
+        Swag: {
+            deps: ['Handlebars', 'jquery'],
+            exports: 'Swag'
         }
     }
 });
 
 
 
-define([ 'router' , 'templates' ], function(  router , templates){
+define([ 'router' , 'templates'  ], function(  router ){
 
 });

@@ -1,3 +1,3 @@
-define(['ember'], function (Ember) {
+define(['ember'], function (Ember , Swag) {
      return  Ember.Route.extend({  });
 });
