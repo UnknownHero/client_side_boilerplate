@@ -6,7 +6,11 @@
 </head>
 <body>
 
-<script data-main="./dist/main.js" src="./app/vendor/requirejs/require.js"></script>
+<!--[if lte IE 8]>
+<script data-main="./app/main.js" src="./app/environments/ie8.js></script>
+<![endif]-->
+
+<script data-main="./app/main.js" src="./app/vendor/requirejs/require.js"></script>
 
 
 </body>

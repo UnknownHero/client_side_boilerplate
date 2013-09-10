@@ -6,12 +6,10 @@
 //
 // The syntax for routers is changing, see: https://gist.github.com/3981133
 
-define(['ember', 'app', 'routes/root'], function(Ember, App, root){
+define(['ember', 'app', 'dependencies'], function(Ember, App){
+        var locator =   App.get("locator");
 
-        App.Router = Ember.Router.extend({
-            enableLogging: true,
-            root: root
-        });
+        App.Router = locator.get("baseRouter");
 
-        return App.Router;
+        console.log(App.Router.create().get("hello"));
 });
