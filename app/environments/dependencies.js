@@ -1,5 +1,5 @@
-define(['ember', 'app' , 'underscore','routers/main', 'routers/denied'],
-    function (Ember, App, _, routers_main, routers_denied) {
+define(['ember', 'app' , 'underscore' , 'model/rest' , 'model/fixture'],
+    function (Ember, App, _ , restAdapter , fixtureAdapter ) {
 
         var locator = App.get("locator"),
             injections = {},
@@ -10,15 +10,15 @@ define(['ember', 'app' , 'underscore','routers/main', 'routers/denied'],
         env = (globalModule.AppEnv) ? globalModule.AppEnv : env;
 
         switch (env) {
-            case "ie":
+            case "test":
                 envInjections = {
-                    baseRouter: routers_denied
+                    dbAdapter: fixtureAdapter
                 }
                 break;
 
             default:
                 envInjections = {
-                    baseRouter: routers_main
+                    dbAdapter: restAdapter
                 }
                 break;
         }

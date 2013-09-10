@@ -1,4 +1,3 @@
-
 define(['ember', 'routers/main'], function(Ember , main){
 
     window.App = Ember.Application.create({

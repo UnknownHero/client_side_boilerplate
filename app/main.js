@@ -1,6 +1,5 @@
 require.config({
 
-    // Define some paths, could instead have local copies of all the CDN stuff
     paths: {
         jquery: 'vendor/jquery/jquery',
         Handlebars: 'vendor/handlebars/handlebars',
