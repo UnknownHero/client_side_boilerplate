@@ -14,6 +14,9 @@ define(['ember', 'app' , 'underscore' , 'model/rest' , 'model/fixture'],
                 envInjections = {
                     dbAdapter: fixtureAdapter
                 }
+
+                require(['model/data/fixtures'])
+
                 break;
 
             default:

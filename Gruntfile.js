@@ -23,14 +23,14 @@ module.exports = function (grunt, projectConfig) {
                 tasks: ['emberTemplates']
             },
             compass: {
-                files: ['<%= project.dev %>/**/*.scss'],
+                files: ['<%= project.dev %>/**/*.{scss,sass}'],
                 tasks: ['compass']
             }
         },
 
         shell: {
             bower: {
-                command: 'nodejs <%= project.bin %>/bower install',
+                command: 'nodejs <%= project.bin %>/bower install --force',
                 options: {
                     stdout: true
                 }

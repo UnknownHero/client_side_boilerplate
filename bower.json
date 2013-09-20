@@ -5,14 +5,17 @@
     "directory" : "app/vendor",
     "dependencies": {
 
-        "jquery": "~1.9.1",
-        "ember": "latest",
-        "ember-data-shim" : "latest",
         "handlebars": "1.0.0-rc.4",
+        "jquery": "~1.9.1",
+        "ember": "1.0.0-rc.4",
+        "ember-data-shim" : "latest",
+
         "swag": "0.3.1",
         "underscore" : "latest",
         "requirejs" : "latest",
-        "require-css" : "latest"
+        "require-css" : "latest",
+        "sass-mixins" : "latest"
+
     },
     "devDependencies": {
         "ember-mocha-adapter": "0.1.1"
