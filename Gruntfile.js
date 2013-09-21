@@ -72,20 +72,35 @@ module.exports = function (grunt, projectConfig) {
             }
         },
 
+
         jasmine: {
             bdd_testing: {
                 src: ['<%= project.dev %>/test/src/*.js','<%= project.dev %>/*.js','<%= project.dev %>/environments/**/*.js',
-                    '<%= project.dev %>/models/**/*.js','<%= project.dev %>/routers/**/*.js'],
+                    '<%= project.dev %>/model/**/*.js','<%= project.dev %>/routers/**/*.js'],
                 options: {
                     specs: '<%= project.dev %>/test/spec/*.js',
                     host: 'http://<%= project.hosts.local %>:<%= project.ports.test %>',
-                    template: require('grunt-template-jasmine-requirejs'),
+                    template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
-                        requireConfigFile: '<%= project.dev %>/main.js',
-                        requireConfig: {
-                            baseUrl:  '<%= project.dev %>/'
+                        coverage: 'result/coverage/coverage.json',
+                        report: 'result/coverage',
+                        template: require('grunt-template-jasmine-requirejs'),
+                        templateOptions: {
+                            requireConfigFile: '<%= project.dev %>/main.js',
+                            requireConfig: {
+                                baseUrl:  '.grunt/grunt-contrib-jasmine/<%= project.dev %>/'
+                            }
                         }
                     }
+
+
+//                    template: require('grunt-template-jasmine-requirejs'),
+//                    templateOptions: {
+//                        requireConfigFile: '<%= project.dev %>/main.js',
+//                        requireConfig: {
+//                            baseUrl:  '<%= project.dev %>/'
+//                        }
+//                    }
                 }
             }
         },
@@ -120,7 +135,6 @@ module.exports = function (grunt, projectConfig) {
                     ]
                 }]
             },
-            server: '.tmp'
         },
 
         compass: {
@@ -153,6 +167,18 @@ module.exports = function (grunt, projectConfig) {
                         expand: true,
                         cwd: '<%= project.dev %>/',
                         dest: '<%= project.release %>/',
+                        src: [
+                            '**',
+                        ]
+                    }
+                ]
+            },
+            istanbul_vendor_fix: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= project.dev %>/vendor',
+                        dest: '.grunt/grunt-contrib-jasmine/<%= project.dev %>/vendor',
                         src: [
                             '**',
                         ]
@@ -199,6 +225,5 @@ module.exports = function (grunt, projectConfig) {
     grunt.registerTask('server:dev', ['connect:dev']);
     grunt.registerTask('server:test', ['connect:test']);
 
-
-    grunt.registerTask('test', ['connect:test', 'jasmine:bdd_testing']);
+    grunt.registerTask('test', ['connect:test', 'copy:istanbul_vendor_fix' , 'jasmine:bdd_testing']);
 };
