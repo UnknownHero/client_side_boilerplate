@@ -15,6 +15,7 @@ module.exports = function (grunt, projectConfig) {
           local: '0.0.0.0'
         },
         ports: {
+            dev: 8064,
             test: 8065
         }
     };
@@ -43,14 +44,21 @@ module.exports = function (grunt, projectConfig) {
 
         connect: {
             options: {
-                port: projectConfig.ports.test,
                 // change this to '0.0.0.0' to access the server from outside
                 hostname: projectConfig.hosts.local
             },
             test: {
                 options: {
+                    port: projectConfig.ports.test,
                     base: ''
 
+                }
+            },
+            dev: {
+                options: {
+                    base: '',
+                    port: projectConfig.ports.dev,
+                    keepalive: true
                 }
             }
         },
@@ -183,6 +191,10 @@ module.exports = function (grunt, projectConfig) {
     });
 
     grunt.registerTask('build', ['shell:bower' , 'emberTemplates' ,  'compass' , 'clean:dist' , 'copy:dist' , 'requirejs:compile' , 'cssmin:minify']);
+
+    grunt.registerTask('server:dev', ['connect:dev']);   //'jasmine:bdd_testing'
+    grunt.registerTask('server:test', ['connect:test']);   //'jasmine:bdd_testing'
+
 
     grunt.registerTask('test', ['connect:test', 'jasmine:bdd_testing']);   //'jasmine:bdd_testing'
 };

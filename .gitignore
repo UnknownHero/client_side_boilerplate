@@ -4,6 +4,7 @@ dist/*
 dist/main.js
 app/css
 
+.grunt
 .sass-cache
 .idea
 *.iml
