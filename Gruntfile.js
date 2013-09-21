@@ -192,9 +192,9 @@ module.exports = function (grunt, projectConfig) {
 
     grunt.registerTask('build', ['shell:bower' , 'emberTemplates' ,  'compass' , 'clean:dist' , 'copy:dist' , 'requirejs:compile' , 'cssmin:minify']);
 
-    grunt.registerTask('server:dev', ['connect:dev']);   //'jasmine:bdd_testing'
-    grunt.registerTask('server:test', ['connect:test']);   //'jasmine:bdd_testing'
+    grunt.registerTask('server:dev', ['connect:dev']);
+    grunt.registerTask('server:test', ['connect:test']);
 
 
-    grunt.registerTask('test', ['connect:test', 'jasmine:bdd_testing']);   //'jasmine:bdd_testing'
+    grunt.registerTask('test', ['connect:test', 'jasmine:bdd_testing']);
 };
