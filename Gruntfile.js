@@ -10,7 +10,13 @@ module.exports = function (grunt, projectConfig) {
     var projectConfig = projectConfig != undefined ? projectConfig : {
         dev: 'app',
         release: 'dist',
-        bin: 'node_modules/.bin'
+        bin: 'node_modules/.bin',
+        hosts: {
+          local: '0.0.0.0'
+        },
+        ports: {
+            test: 8065
+        }
     };
 
     grunt.initConfig({
@@ -25,6 +31,27 @@ module.exports = function (grunt, projectConfig) {
             compass: {
                 files: ['<%= project.dev %>/**/*.{scss,sass}'],
                 tasks: ['compass']
+            },
+            jasmine:{
+                files: ['<%= project.dev %>/**/*.js', '!<%= project.dev %>/vendor/**/*.js'],
+                tasks: 'test'
+            }
+
+
+        },
+
+
+        connect: {
+            options: {
+                port: projectConfig.ports.test,
+                // change this to '0.0.0.0' to access the server from outside
+                hostname: projectConfig.hosts.local
+            },
+            test: {
+                options: {
+                    base: ''
+
+                }
             }
         },
 
@@ -37,6 +64,23 @@ module.exports = function (grunt, projectConfig) {
             }
         },
 
+        jasmine: {
+            bdd_testing: {
+                src: ['<%= project.dev %>/test/src/*.js','<%= project.dev %>/*.js','<%= project.dev %>/environments/**/*.js',
+                    '<%= project.dev %>/models/**/*.js','<%= project.dev %>/routers/**/*.js'],
+                options: {
+                    specs: '<%= project.dev %>/test/spec/*.js',
+                    host: 'http://<%= project.hosts.local %>:<%= project.ports.test %>',
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfigFile: '<%= project.dev %>/main.js',
+                        requireConfig: {
+                            baseUrl:  '<%= project.dev %>/'
+                        }
+                    }
+                }
+            }
+        },
 
         requirejs: {
             compile: {
@@ -138,5 +182,7 @@ module.exports = function (grunt, projectConfig) {
 
     });
 
-    grunt.registerTask('build', ['shell:bower' , 'emberTemplates' ,  'compass' , 'clean:dist' , 'copy:dist' , 'requirejs:compile' , 'cssmin:minify']);         // ,
+    grunt.registerTask('build', ['shell:bower' , 'emberTemplates' ,  'compass' , 'clean:dist' , 'copy:dist' , 'requirejs:compile' , 'cssmin:minify']);
+
+    grunt.registerTask('test', ['connect:test', 'jasmine:bdd_testing']);   //'jasmine:bdd_testing'
 };

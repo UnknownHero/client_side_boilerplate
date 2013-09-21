@@ -18,6 +18,6 @@
 
     },
     "devDependencies": {
-        "ember-mocha-adapter": "0.1.1"
+        "jasmine" : "latest"
     }
 }
