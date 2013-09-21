@@ -4,6 +4,7 @@ dist/*
 dist/main.js
 app/css
 
+result
 .grunt
 .sass-cache
 .idea

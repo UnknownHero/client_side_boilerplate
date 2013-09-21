@@ -97,7 +97,11 @@ module.exports = function (grunt, projectConfig) {
                     mainConfigFile: "<%= project.dev %>/main.js",
                     out: "<%= project.release %>/main.js",
                     optimize: "uglify2",
-                    name: 'main'
+                    name: 'main',
+                    paths:{
+                        requireLib: "vendor/requirejs/require"
+                    },
+                    include:"requireLib"
                 }
             } ,
 
