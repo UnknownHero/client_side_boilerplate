@@ -1,4 +1,4 @@
-define(['ember', 'routers/routes/root'], function(Ember, App, root){
+define(['ember', 'routers/routes/root'], function(Ember,  root){
 
     var Router = Ember.Router.extend({
         enableLogging: true,
