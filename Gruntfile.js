@@ -80,6 +80,10 @@ module.exports = function (grunt, projectConfig) {
                 options: {
                     specs: '<%= project.dev %>/test/spec/*.js',
                     host: 'http://<%= project.hosts.local %>:<%= project.ports.test %>',
+                    junit: {
+                        path: "result",
+                        consolidate: true
+                    },
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'result/coverage/coverage.json',
@@ -93,14 +97,6 @@ module.exports = function (grunt, projectConfig) {
                         }
                     }
 
-
-//                    template: require('grunt-template-jasmine-requirejs'),
-//                    templateOptions: {
-//                        requireConfigFile: '<%= project.dev %>/main.js',
-//                        requireConfig: {
-//                            baseUrl:  '<%= project.dev %>/'
-//                        }
-//                    }
                 }
             }
         },

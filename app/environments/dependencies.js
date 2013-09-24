@@ -3,16 +3,22 @@ define(['ember', 'app' , 'underscore' , 'model/rest' , 'model/fixture'],
 
         var locator = App.get("locator"),
             injections = {},
-            envInjections = {},
             env = "default",
-            globalModule = window;
+            globalModule = window,
+            envInjections = {
+
+                dbAdapter: null,
+                appRun: true
+
+            };
 
         env = (globalModule.AppEnv) ? globalModule.AppEnv : env;
 
         switch (env) {
             case "test":
                 envInjections = {
-                    dbAdapter: fixtureAdapter
+                    dbAdapter: fixtureAdapter,
+                    appRun: false
                 }
 
                 require(['model/data/fixtures'])
@@ -21,7 +27,8 @@ define(['ember', 'app' , 'underscore' , 'model/rest' , 'model/fixture'],
 
             default:
                 envInjections = {
-                    dbAdapter: restAdapter
+                    dbAdapter: restAdapter,
+                    appRun: true
                 }
                 break;
         }
