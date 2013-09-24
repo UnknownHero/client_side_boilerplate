@@ -3,6 +3,7 @@ app/vendor
 dist/*
 dist/main.js
 app/css
+vagrant/.vagrant
 
 result
 .grunt

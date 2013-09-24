@@ -16,7 +16,8 @@ module.exports = function (grunt, projectConfig) {
         },
         ports: {
             dev: 8064,
-            test: 8065
+            test: 8065,
+            virtual_dev: 8067
         }
     };
 
