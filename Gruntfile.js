@@ -17,7 +17,8 @@ module.exports = function (grunt, projectConfig) {
         ports: {
             dev: 8064,
             test: 8065,
-            virtual_dev: 8067
+            virtual_dev: 8067,
+            virtual_test: 8068
         }
     };
 
@@ -55,11 +56,17 @@ module.exports = function (grunt, projectConfig) {
 
                 }
             },
-            dev: {
+            dev_forever: {
                 options: {
                     base: '',
                     port: projectConfig.ports.dev,
                     keepalive: true
+                }
+            },
+            dev: {
+                options: {
+                    base: '',
+                    port: projectConfig.ports.dev
                 }
             }
         },
@@ -212,6 +219,7 @@ module.exports = function (grunt, projectConfig) {
     grunt.registerTask('dev', function (target) {
 
         grunt.task.run([
+            'connect:dev',
             'watch'
         ]);
 
@@ -219,7 +227,7 @@ module.exports = function (grunt, projectConfig) {
 
     grunt.registerTask('build', ['shell:bower' , 'emberTemplates' ,  'compass' , 'clean:dist' , 'copy:dist' , 'requirejs:compile' , 'cssmin:minify']);
 
-    grunt.registerTask('server:dev', ['connect:dev']);
+    grunt.registerTask('server:dev', ['connect:dev_forever']);
     grunt.registerTask('server:test', ['connect:test']);
 
     grunt.registerTask('test', ['connect:test', 'copy:istanbul_vendor_fix' , 'jasmine:bdd_testing']);

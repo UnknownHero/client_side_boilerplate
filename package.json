@@ -11,7 +11,7 @@
     "devDependencies": {
         "grunt": "~0.4.1",
 
-        "grunt-shell": "0.3.*",
+        "grunt-shell": "0.4.0",
         "grunt-contrib-jasmine": "*",
         "grunt-contrib-connect": "~0.3.0",
         "grunt-template-jasmine-istanbul": "*",
@@ -27,7 +27,7 @@
 
         "load-grunt-tasks": "~0.1.0",
         "time-grunt": "~0.1.1",
-        "bower": "1.2.*"
+        "bower": "1.2.6"
     },
 
     "engines": {
