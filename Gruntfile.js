@@ -5,7 +5,7 @@ module.exports = function (grunt, projectConfig) {
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
 
-
+     var ports = require('./ports.json');
     // configurable paths
     var projectConfig = projectConfig != undefined ? projectConfig : {
         dev: 'app',
@@ -15,10 +15,9 @@ module.exports = function (grunt, projectConfig) {
           local: '0.0.0.0'
         },
         ports: {
-            dev: 8064,
-            test: 8065,
-            virtual_dev: 8067,
-            virtual_test: 8068
+            dev: ports.dev,
+            test: ports.test,
+            live: ports.live
         }
     };
 
@@ -88,6 +87,8 @@ module.exports = function (grunt, projectConfig) {
                 options: {
                     specs: '<%= project.dev %>/test/spec/*.js',
                     host: 'http://<%= project.hosts.local %>:<%= project.ports.test %>',
+                    outfile: "run.html",
+                    keepRunner: true,
                     junit: {
                         path: "result",
                         consolidate: true
@@ -139,6 +140,10 @@ module.exports = function (grunt, projectConfig) {
                     ]
                 }]
             },
+
+            unit_test_auto_runner:{
+
+            }
         },
 
         compass: {
@@ -163,7 +168,6 @@ module.exports = function (grunt, projectConfig) {
 
         },
 
-
         copy: {
             dist: {
                 files: [
@@ -177,12 +181,26 @@ module.exports = function (grunt, projectConfig) {
                     }
                 ]
             },
+
+            unit_test_auto_runner: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '',
+                        dest: 'result/unit/',
+                        src: [
+                            '<%= project.dev %>/test/**','.grunt/**','run.html'
+                        ]
+                    }
+                ]
+            },
+
             istanbul_vendor_fix: {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= project.dev %>/vendor',
-                        dest: '.grunt/grunt-contrib-jasmine/<%= project.dev %>/vendor',
+                        cwd: '<%= project.dev %>',
+                        dest: '.grunt/grunt-contrib-jasmine/<%= project.dev %>',
                         src: [
                             '**',
                         ]
@@ -230,5 +248,5 @@ module.exports = function (grunt, projectConfig) {
     grunt.registerTask('server:dev', ['connect:dev_forever']);
     grunt.registerTask('server:test', ['connect:test']);
 
-    grunt.registerTask('test', ['connect:test', 'copy:istanbul_vendor_fix' , 'jasmine:bdd_testing']);
+    grunt.registerTask('test', ['connect:test', 'copy:istanbul_vendor_fix' , 'jasmine:bdd_testing' , 'copy:unit_test_auto_runner']);
 };

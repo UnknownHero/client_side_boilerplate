@@ -30,13 +30,16 @@ VAGRANTFILE_API_VERSION = "2"
 require 'rbconfig'
 
 
+  ports = JSON.load('../ports.json')
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise32"
 
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
-  config.vm.network :forwarded_port, guest: 8064, host: 8067
-  config.vm.network :forwarded_port, guest: 8065, host: 8068
+  config.vm.network :forwarded_port, guest: ports.dev, host: ports.vir_dev
+  config.vm.network :forwarded_port, guest: ports.test, host: ports.vir_test
+  config.vm.network :forwarded_port, guest: ports.live, host: ports.vir_live
 
   config.vm.synced_folder "../", "/home/vagrant/app"
 
