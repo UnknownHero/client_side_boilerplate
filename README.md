@@ -1,1 +1,3 @@
+Vagrant
+Grunt
 Emberjs
