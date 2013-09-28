@@ -1,3 +1,1 @@
-Vagrant
-Grunt
-Emberjs
+readme in progress
