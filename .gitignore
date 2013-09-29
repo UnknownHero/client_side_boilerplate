@@ -6,6 +6,7 @@ app/css
 vagrant/.vagrant
 
 result
+!result/index.html
 .grunt
 .sass-cache
 .idea
