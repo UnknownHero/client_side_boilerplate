@@ -6,7 +6,7 @@ module.exports = function (grunt, projectConfig) {
     require('load-grunt-tasks')(grunt);
 
      var ports = require('./ports.json');
-    // configurable paths
+
     var projectConfig = projectConfig != undefined ? projectConfig : {
         dev: 'app',
         release: 'dist',
